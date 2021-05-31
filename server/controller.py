@@ -23,7 +23,7 @@ def all_movies():
 
 
 @db_session
-def detail_movie(id):
+def detail_movies(id):
     try:
         result = Filme.get(id=id)
 
@@ -39,13 +39,13 @@ def detail_movie(id):
         msg = {
             'msg': 'Filme não encontrado'
         }
-        response = msg
+        response = json.dumps(msg)
 
     return response
 
 
 @db_session
-def add_movie(nome, ano, genero):
+def add_movies(nome, ano, genero):
     movie = Filme(nome=nome, ano_lancamento=ano, genero=genero)
 
     response = {
@@ -59,12 +59,17 @@ def add_movie(nome, ano, genero):
 
 @db_session
 def remove_movie(id):
-    result = Filme.get(id=id)
-    result.delete()
+    try:
+        result = Filme.get(id=id)
+        result.delete()
 
-    response = {
-        'msg': 'Filme deletado'
-    }
+        response = {
+            'msg': 'Filme deletado'
+        }
+    except:
+        response = {
+            'msg': 'Filme nao encontrado'
+        }
 
     response = json.dumps(response)
 
