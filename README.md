@@ -22,7 +22,7 @@ Antes de rodar o projeto execute o comando:
 pip3 install -r requirements.txt
 ```
 
-O comando acima vai instalar o pony orm, que é utilizado para a gerencia dos dados
+O comando acima vai instalar todas as dependências que o projeto precisa.
 
 Em um terminal aberto na raiz do projeto, execute o comando:
 
