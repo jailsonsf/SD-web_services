@@ -63,7 +63,7 @@ def put_movie(idMovie):
     resp.headers.set('Access-Control-Allow-Origin', '*')
     resp.headers.set('Authorization:', 'Basic YWxhZGRpbjpvcGVuc2VzYW1l')
 
-    return resp, 201
+    return resp, 200
 
 
 @app.route('/movies/<int:idMovie>', methods=['PATCH'])
@@ -74,7 +74,7 @@ def patch_movie(idMovie):
     resp.headers.set('Access-Control-Allow-Origin', '*')
     resp.headers.set('Authorization:', 'Basic YWxhZGRpbjpvcGVuc2VzYW1l')
 
-    return resp, 201
+    return resp, 200
 
 
 @app.route('/movies/<int:idMovie>', methods=['DELETE'])
