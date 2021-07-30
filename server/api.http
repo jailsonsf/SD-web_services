@@ -1,0 +1,4 @@
+curl -I http://localhost:5000/movies
+###
+
+curl -X OPTIONS http://localhost:5000/movies -i

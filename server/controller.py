@@ -36,10 +36,7 @@ def detail_movies(id):
 
         response = json.dumps(movie)
     except:
-        msg = {
-            'msg': 'Filme não encontrado'
-        }
-        response = json.dumps(msg)
+        response = json.dumps({'msg': 'Filme não encontrado'})
 
     return response
 
@@ -49,10 +46,60 @@ def add_movies(nome, ano, genero):
     movie = Filme(nome=nome, ano_lancamento=ano, genero=genero)
 
     response = {
-        'msg': 'Filme adicionado'
+        'msg': 'Filme adicionado',
     }
 
     response = json.dumps(response)
+
+    return response
+
+
+@db_session
+def update_movie(id, nome, ano, genero):
+    try:
+        result = Filme.get(id=id)
+
+        if nome != '':
+            result.nome = nome
+        if ano != None:
+            result.ano = ano
+        if genero != '':
+            result.genero = genero
+
+        response = {
+            'msg': 'Filme Atualizado',
+        }
+
+        response = json.dumps(response)
+
+    except:
+        response = {
+            'msg': 'Filme não encontrado'
+        }
+        response = json.dumps(response)
+
+    return response
+
+
+@db_session
+def patch_movies(id, nome):
+    try:
+        result = Filme.get(id=id)
+
+        if nome != '':
+            result.nome = nome
+
+        response = {
+            'msg': 'Filme Atualizado',
+        }
+
+        response = json.dumps(response)
+
+    except:
+        response = {
+            'msg': 'Filme não encontrado'
+        }
+        response = json.dumps(response)
 
     return response
 
